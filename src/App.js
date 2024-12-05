@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoadingSpinner from './components/atoms/LoadingSpinner/LoadingSpinner';
 import './App.css';
+
+// Lazy load page components
+const SearchPage = lazy(() => import('./pages/SearchPage').then(module => ({ default: module.default })));
+const UserDetailsPage = lazy(() => import('./pages/UserDetailsPage').then(module => ({ default: module.default })));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<SearchPage />} />
+            <Route path="/user/:id" element={<UserDetailsPage />} />
+          </Routes>
+        </Suspense>
+      </div>
+    </Router>
   );
 }
 

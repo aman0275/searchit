@@ -1,0 +1,27 @@
+.lazy-image-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.lazy-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.lazy-image.loading {
+  opacity: 0.5;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+} 
