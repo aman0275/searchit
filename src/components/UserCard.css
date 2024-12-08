@@ -1,0 +1,16 @@
+.user-card {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.user-card:hover {
+  background-color: #f0f0f0;
+}
+
+.user-card:active {
+  background-color: white;
+} 
